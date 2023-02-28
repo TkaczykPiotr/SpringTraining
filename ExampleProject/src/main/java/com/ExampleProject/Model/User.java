@@ -1,6 +1,9 @@
 package com.ExampleProject.Model;
 
 import jakarta.persistence.*;
+import org.apache.tomcat.jni.Library;
+
+import java.util.List;
 
 
 @Entity
@@ -10,18 +13,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private String Surname;
+    private String surname;
     private int age;
+
 
     public User(String name, String surname, int age) {
         this.name = name;
-        this.Surname = surname;
+        this.surname = surname;
         this.age = age;
     }
+
 
     public User() {
 
     }
+
 
     public String getName() {
         return name;
@@ -32,11 +38,11 @@ public class User {
     }
 
     public String getSurname() {
-        return Surname;
+        return surname;
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        this.surname = surname;
     }
 
     public int getAge() {

@@ -19,6 +19,7 @@ public class UserController {
     public String getInfo() {
         return "hello";
     }
+
     @GetMapping("/all")
     public List<User> getAllUser() {
         return userRepository.findAll();
