@@ -27,22 +27,18 @@ public class HouseController {
     public ResponseEntity<List<House>> getAllHouse() {
         List<House> _house = houseRepository.findAll();
         return ResponseEntity.ok(_house);
+    }
 
-//        public List<House> getAllHouse() { return.houseRepository.findAll();} //nie działa zwraca 404 not found
+    @GetMapping("/one/{name}")
+    public ResponseEntity<List<House>> getAllByNameHouse(@PathVariable(value = "name") String name) {
+        List<House> _house = houseRepository.findByName(name);
+        return ResponseEntity.ok(_house);
+    }
 
-        // Dlaczego nie działa zwykla return List<House> ?
-        // Tylko musi być ResponseEntity<List<House>> ?
-
-//        for(House h : _house){
-//           ResponseEntity.ok(h);
-//        }
-
-//        _house.stream().map(house -> {
-//            User user = house.getUser();
-//            userRepository.findById(user.getId());
-//            return userRepository.findById(user.getId());
-//        });
-
+    @GetMapping("/two/{name}")
+    public ResponseEntity<List<House>> getAllHouseByNameUser(@PathVariable(value = "name") String name) {
+        List<House> _house = houseRepository.findHouseByUserName(name);
+        return ResponseEntity.ok(_house);
     }
 
     @PostMapping("/add/{userId}")
